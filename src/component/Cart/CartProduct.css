@@ -1,0 +1,44 @@
+.cart-item{
+    width: auto;
+    border: 2px solid red;
+    position: fixed;
+    z-index: 100;
+    background-color: black;
+    color: white;
+    top:7%;
+    right:0;
+    font-size: 2rem;
+    border-radius:25px;
+    
+    
+}
+
+.item{
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.item img{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 2px;
+}
+.cnt{
+    display: flex;
+    gap:5%;
+    margin-left:40%;
+    margin-top: 20px;
+}
+
+.remove-btn{
+    margin-left:10px;
+}
+.amt{
+    justify-content: center;
+}
+.header-row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20%;
+}

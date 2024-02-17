@@ -1,0 +1,12 @@
+
+.product-card{
+     width: 20rem;
+    height:10rem;
+    margin: auto;
+     margin-top:1rem;
+}
+.add-btn{
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+}
