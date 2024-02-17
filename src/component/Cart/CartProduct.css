@@ -42,3 +42,9 @@
     justify-content: space-between;
     margin-left: 20%;
 }
+.input-qty{
+    display: flex;
+}
+.input-qty form{
+    width: 4rem;
+}

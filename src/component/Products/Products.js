@@ -1,19 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Card,Button,Container,Col,Row} from 'react-bootstrap';
-import productsArray from './ProductDetails';
+import ProductContext from "../Store/ProductContext";
 import './Product.css'
+
+
 
 function Products() {
 
-   const ProductDeets = productsArray.map((product) => (
-     <Col key={product.index} lg={3} xl={6}>
+  const ProductCtx = useContext(ProductContext)
+  const{productArr,handleAddToCart} = ProductCtx
+
+  const handleAddBtn=(id)=>{
+    handleAddToCart(id)
+  }
+
+   const ProductDeets = productArr.map((product) => (
+     <Col key={product.id} lg={3} xl={6}>
        <Card  className='product-card'>
          <Card.Img variant="top" src={product.image} />
          <Card.Body>
            <Card.Title>{product.title}</Card.Title>
            <Card.Text>
              {product.price}
-             <Button variant="primary" className='add-btn'>Add To Cart</Button>
+             <Button variant="primary" className='add-btn' onClick={()=>{handleAddBtn(product.id)}}>Add To Cart</Button>
            </Card.Text>
          </Card.Body>
        </Card>

@@ -1,54 +1,40 @@
 
-import { Container, Row, Col,Button} from "react-bootstrap";
+import { Container, Row, Col,Button, Form} from "react-bootstrap";
 import  ReactDOM from "react-dom";
 import './CartProduct.css'
+import { useContext } from "react";
+import ProductContext from "../Store/ProductContext";
 
 function Cart(props) {
-  const CartItem = [
-    {
-      title: "Laptop",
-      image: "https://source.unsplash.com/150x150/?laptop",
-      price: 1200,
-      qty: 2,
-    },
-    {
-      title: "Smartphone",
-      image: "https://source.unsplash.com/150x150/?smartphone",
-      price: 800,
-      qty: 5,
-    },
-    {
-      title: "T-Shirt",
-      image: "https://source.unsplash.com/150x150/?t-shirt",
-      price: 20,
-      qty: 6,
-    },
-    {
-      title: "Jeans",
-      image: "https://source.unsplash.com/150x150/?jeans",
-      price: 50,
-      qty: 8,
-    },
-  ];
+  
+  const ProductCtx = useContext(ProductContext);
+  const { cart} = ProductCtx;
 
-let totalAmount = CartItem.reduce(
+
+
+let totalAmount = cart.reduce(
   (acc, item) => acc + item.price * item.qty,
   0
 );
 
-  let Items = CartItem.map((item) => (
+  let Items = cart.map((item) => (
     <Container className="item">
       <Row key={item.index}>
         <Col>
           <img src={item.image} alt="404"></img>
-            {item.title}
+          {item.title}
         </Col>
         <Col>{item.price}</Col>
         <Col>
-          {item.qty}
-          <Button variant="outline-danger" className="remove-btn">
-            Remove
-          </Button>
+          <div className="input-qty">
+          
+            <Form>
+              <Form.Control placeholder="Qty" value={item.qty}/>
+            </Form>
+            <Button variant="outline-danger" className="remove-btn">
+              Remove
+            </Button>
+          </div>
         </Col>
       </Row>
     </Container>
