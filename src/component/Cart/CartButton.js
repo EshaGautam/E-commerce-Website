@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import CartProduct from './CartProduct'
 import { Container,Button } from 'react-bootstrap'
 import './CartButton.css'
@@ -10,8 +10,7 @@ function CartButton() {
     const { cart } = ProductCtx;
 
  const[orderInCart,setOrderInCart]= useState(false)
-
- const cartQty = cart.length
+  const cartQty = cart.length;
 
  const handleCartBtn=()=>{
     setOrderInCart(!orderInCart)
@@ -20,7 +19,7 @@ function CartButton() {
   return (
     <Container>
       <Button variant="outline-info" className='cart-button' onClick={handleCartBtn}>Cart {cartQty}</Button>
-      {!orderInCart&&<CartProduct onClick={handleCartBtn}/>}
+      {orderInCart&&<CartProduct onClick={handleCartBtn}/>}
     </Container>
   );
 }
