@@ -1,12 +1,13 @@
 import React from 'react'
-import Products from "../Products/Products";
-
 import NavbarHeader from '../Navbar/Navbar';
+import HomeItems from './HomeItems';
+import Footer from '../Footer/Footer';
 function Home() {
   return (
     <div>
-      <NavbarHeader />
-      <Products />
+     <NavbarHeader/>
+     <HomeItems/>
+     <Footer/>
     </div>
   );
 }

@@ -1,13 +1,18 @@
 import React from 'react'
 import NavbarHeader from '../Navbar/Navbar'
 import minions from'./image/minions.jpg'
+import Footer from '../Footer/Footer'
 
 function About() {
   return (
     <div>
       <NavbarHeader />
       <h1>About</h1>
-    <img src={minions}  alt='404' style={{height:'100px',width:'100px'}}></img>
+      <img
+        src={minions}
+        alt="404"
+        style={{ height: "100px", width: "100px" }}
+      ></img>
       <p>
         Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
         sorrows, hates no prosecutors will unfold in the enduring of which were
@@ -30,6 +35,7 @@ function About() {
         take the hardships of the life of harsh condemn, we are accusing him?
         Him whom something large cisterns.
       </p>
+      <Footer />
     </div>
   );
 }

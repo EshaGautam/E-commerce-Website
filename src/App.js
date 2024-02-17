@@ -4,6 +4,7 @@ import Home from './component/Home/Home';
 import ProductProvider from './component/Store/ProductProvider';
 import { RouterProvider, createBrowserRouter } from "react-router-dom"; //createRoutesFromElements,Route };
 import About from './component/About/About';
+import Store from './component/StoreRoute/Store';
 
 // Alternative Approach to create route
 
@@ -18,7 +19,8 @@ import About from './component/About/About';
 
 const router = createBrowserRouter([
   {path:'/',element:<Home/>},
-  {path:'/about',element:<About/>}
+  {path:'/store',element:<Store/>},
+  {path:'/about',element:<About/>},
 ])
 
 function App() {

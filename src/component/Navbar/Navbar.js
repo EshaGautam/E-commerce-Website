@@ -1,5 +1,4 @@
 import React from 'react'
-import CartButton from '../Cart/CartButton'
 import { Navbar ,Nav,Container} from 'react-bootstrap'
 import './Navbar.css'
 import { NavLink } from 'react-router-dom'
@@ -13,7 +12,7 @@ function NavbarHeader() {
             <NavLink to="/" className="nav-link">
               Home
             </NavLink>
-            <NavLink to="#features" className="nav-link">
+            <NavLink to="/store" className="nav-link">
               Store
             </NavLink>
             <NavLink to="/about" className="nav-link">
@@ -21,7 +20,6 @@ function NavbarHeader() {
             </NavLink>
           </Nav>
         </Container>
-        <CartButton />
       </Navbar>
     </div>
   );

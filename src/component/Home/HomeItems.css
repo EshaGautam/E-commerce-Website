@@ -1,0 +1,24 @@
+.tour-list{
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    border:3px solid black;
+    border-radius: 5px;
+    
+
+}
+.tour-deets{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  
+}
+
+
+
+.head{
+    margin-left:45%;
+    margin-top:5%;
+    margin-bottom:2%;
+    font-size: 4rem;
+}
