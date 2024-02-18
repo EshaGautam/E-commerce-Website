@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Container, ListGroup, Button } from "react-bootstrap";
 import "./HomeItems.css";
 
@@ -6,13 +6,14 @@ function HomeItems() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
-  const [retrying, setRetrying] = useState(null);
+  const [retrying, setRetrying] = useState(true);
     const [retryTimeoutId, setRetryTimeoutId] = useState(null);
 
 
    
-   const fetchData = async () => {
-         setLoading(true);
+   const fetchData =useCallback(async () => {
+     setLoading(true);
+     setError(null);
      try {
        let response = await fetch("https://swapi.dev/api/films/");
 
@@ -36,14 +37,12 @@ function HomeItems() {
        }
      }
      setLoading(false);
-   };
-
+   },[])
 
    useEffect(() => {
-     setError(null);
-     if (retrying) {
-       setTimeout(fetchData, 0);
-     }
+    if (retrying) {
+      setTimeout(fetchData, 0);
+    }
    }, [retrying]);
 
 
@@ -51,7 +50,7 @@ function HomeItems() {
    const handleCancel = () => {
      setRetrying(!retrying);
      clearTimeout(retryTimeoutId);
-     console.log("Retry cancelled");
+   
    };
 
    const movielist =
@@ -82,7 +81,7 @@ function HomeItems() {
        <Button
          type="button"
          variant="secondary"
-         onClick={() => setRetrying(true)}
+         onClick={fetchData}
          className="movie-btn"
        >
          Movie
