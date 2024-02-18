@@ -17,10 +17,19 @@
 
 
 .movie-btn{
+ 
     margin-left:45%;
     margin-top:5%;
     margin-bottom:2%;
     width:10rem;
     height: 4rem;
    
+}
+
+.onload{
+   display: flex;
+   justify-content: center;
+   margin-top: 10%;
+   font-size: 3rem;
+   margin-left: 3%;
 }

@@ -1,57 +1,16 @@
 import React, { useState } from 'react'
 import { Container,ListGroup,Button } from 'react-bootstrap';
 import './HomeItems.css'
-// const tours = [
-//   {
-//     id:Math.random(),
-//     date: "JUL16",
-//     city: "DETROIT,MI",
-//     place: "DTE ENERGY MUSIC THEATRE",
-//   },
-
-//   {
-//         id:Math.random(),
-//     date: "JUL19",
-//     city: "TORONTO,ON",
-//     place: "BUDWEISER STAGE",
-//   },
-//   {
-//         id:Math.random(),
-//     date: "JUL 22",
-//     city: "BRISTOW, VA",
-//     place: "JIGGY LUBE LIVE",
-//   },
-
-//   {
-//         id:Math.random(),
-//     date: "JUL 29",
-//     city: "PHOENIX, AZ",
-//     place: "AK-CHIN PAVILION",
-//   },
-
-//   {
-//         id:Math.random(),
-//     date: "AUG 2",
-//     city: "LAS VEGAS, NV",
-//     place: "T-MOBILE ARENA",
-//   },
-//   {
-//         id:Math.random(),
-//     date: "AUG 7",
-//     city: "CONCORD, CA",
-//     place: "CONCORD PAVILION",
-//   },
-// ];
 
 function HomeItems() {
   const [movies,setMovies]=useState([])
+  const [loading,setLoading]=useState(false)
 
 const handleMovieResponse=async()=>{
+  setLoading(true);
  try {
     let response = await fetch("https://swapi.dev/api/films/");
     let movieData = await response.json();
-
-  
 
     let transformedData = movieData.results.map((movie) => ({
       id: movie.episode_id,
@@ -61,17 +20,14 @@ const handleMovieResponse=async()=>{
     }));
 
     setMovies(transformedData);
+    setLoading(false)
   } 
   catch (error) {
     alert(`Error: ${error.message}`);
   }
 };
 
-
-
-
-
-    const movielist = movies.map((movie) => (
+    const movielist = movies.length>0 && movies.map((movie) => (
       <Container className="movie">
         <ListGroup>
           <div className="movie-list">
@@ -90,7 +46,7 @@ const handleMovieResponse=async()=>{
           </div>
         </ListGroup>
       </Container>
-    ));
+    ))
   return (
     <div>
       <Button
@@ -100,7 +56,7 @@ const handleMovieResponse=async()=>{
       >
         Movie
       </Button>
-     
+      {loading && <p className="onload">Loading...</p> }
       {movielist}
     </div>
   );
