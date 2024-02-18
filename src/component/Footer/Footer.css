@@ -1,5 +1,13 @@
 .footer-style{
-    background-color: aqua;
+ 
+    position: static;
+     background-color: aqua;
     height: 25vh;
-    margin-top: 20%;
+     margin-top: 20%;
+    bottom: 0;
+    width: 100%;
+  
+  
+  
+ 
 }

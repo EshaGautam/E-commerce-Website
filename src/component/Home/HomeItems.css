@@ -1,4 +1,4 @@
-.tour-list{
+.movie-list{
     width: 50%;
     margin: auto;
     margin-top: 10px;
@@ -7,7 +7,7 @@
     
 
 }
-.tour-deets{
+.movie-deets{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -16,9 +16,11 @@
 
 
 
-.head{
+.movie-btn{
     margin-left:45%;
     margin-top:5%;
     margin-bottom:2%;
-    font-size: 4rem;
+    width:10rem;
+    height: 4rem;
+   
 }
