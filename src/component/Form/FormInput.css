@@ -1,0 +1,14 @@
+.form-style{
+    width:50%;
+    margin:auto;
+    margin-top:50px;
+    border:2px solid black;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.form-btn{
+  margin-top: 20px;
+  margin-left: 40%;
+}
