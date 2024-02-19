@@ -2,7 +2,7 @@ import './FormInput.css'
 import { Form ,Button} from 'react-bootstrap'
 import React, { useRef } from 'react'
 
-const FormInput=()=> {
+const FormInput=(props)=> {
   let enteredTitle = useRef('')
   let enteredDirector= useRef('')
   let enteredDate = useRef('')
@@ -15,7 +15,11 @@ const handleMovieSubmit=(event)=>{
     director: enteredDirector.current.value,
     date: enteredDate.current.value,
   };
+  props.addMovie(movieObj)
   console.log(movieObj)
+  enteredTitle.current.value=''
+  enteredDirector.current.value = " ";
+  enteredDate.current.value = " ";
 }
   return (
     <div className="form-style">
@@ -27,7 +31,7 @@ const handleMovieSubmit=(event)=>{
         <Form.Control as="textarea" rows={3}  ref={enteredDirector}/>
         <br />
         <label>RELEASE DATE</label>
-        <Form.Control type="date" aria-label="Disabled input example" ref={enteredDirector}/>
+        <Form.Control type="date" aria-label="Disabled input example" ref={enteredDate}/>
         <Button  type="submit" variant="secondary" className='form-btn'>Add Movie</Button>
       </form>
     </div>
