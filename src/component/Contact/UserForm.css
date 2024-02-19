@@ -1,0 +1,14 @@
+.userform{
+    border: 2px solid black;
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px cadetblue
+    ;
+}
+.submit-btn{
+    margin-left: 40%;
+    margin-bottom:10px ;
+}

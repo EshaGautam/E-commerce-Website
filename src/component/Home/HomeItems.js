@@ -67,10 +67,10 @@ const fetchData = useCallback(async () => {
       setRetryTimeoutId(setTimeout(fetchData, 1000));
     }
   }
-   finally {
+
 
     setLoading(false);
-  }
+  
 }, []);
 
 // using useEffect to make API call and fetch data from database when the component mounts---------
@@ -78,6 +78,7 @@ const fetchData = useCallback(async () => {
     if (retrying) {
       setTimeout(fetchData, 0);
     }
+  
   }, [retrying]);
 
 
@@ -115,9 +116,9 @@ const handleDeleteMovie = async (movie) => {
    catch (error) {
     setError(error.message);
   } 
-  finally {
+ 
     setLoading(false);
-  }
+  
 };
 
   const movielist =

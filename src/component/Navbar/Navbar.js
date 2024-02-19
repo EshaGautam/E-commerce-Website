@@ -18,6 +18,9 @@ function NavbarHeader() {
             <NavLink to="/about" className="nav-link">
               About
             </NavLink>
+            <NavLink to="/contact" className="nav-link">
+               Contact
+            </NavLink>
           </Nav>
         </Container>
       </Navbar>
