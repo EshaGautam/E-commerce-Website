@@ -38,10 +38,8 @@ const handleLogin=async(event)=>{
     );
     const response = await userData.json();
     if(userData.ok){
-        console.log(response)
         handleLoggedIn(response.idToken)
-        console.log(response.idToken)
-        history.replace('/store')
+        history.replace("/store");
     }
     else{
         let errorMessage = 'Failed to login'
