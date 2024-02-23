@@ -54,8 +54,17 @@ const productsArray = [
 
 
 const ProductProvider = (props)=>{
+  const existingUser = localStorage.getItem('token')
 const [productArr,setProductArr]=useState(productsArray)
 const [cart,setCart]=useState([])
+const [token, setToken] = useState(existingUser);
+
+const isUserLoggedIn = !!token;
+
+const handleLoggedIn =(id)=>{
+  localStorage.setItem('token',id)
+  setToken(id)
+}
 
   const addProduct = (product) => {
     setProductArr((prev) => [...prev, { product }]);
@@ -78,11 +87,17 @@ const [cart,setCart]=useState([])
  };
 
 
+ 
+
 const productList={
    productArr,
    addProduct,
    handleAddToCart,
    cart,
+   token,
+   handleLoggedIn,
+   isUserLoggedIn
+   
    
 }
 

@@ -19,7 +19,10 @@ function NavbarHeader() {
               About
             </NavLink>
             <NavLink to="/contact" className="nav-link">
-               Contact
+              Contact
+            </NavLink>
+            <NavLink to="/auth" className="nav-link">
+              Login
             </NavLink>
           </Nav>
         </Container>
