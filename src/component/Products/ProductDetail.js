@@ -4,6 +4,8 @@ import Footer from "../Footer/Footer";
 import "./ProductDetail.css";
 import { useParams } from "react-router-dom";
 import ProductContext from "../Store/ProductContext";
+import ProductImg from "./ProductImg";
+import { Button } from "react-bootstrap";
 
 function ProductDetail() {
   const ProductCtx = useContext(ProductContext);
@@ -12,28 +14,51 @@ function ProductDetail() {
   const [productDeets, setProductDeets] = useState([]);
   const [haveDeets,setHaveDeets] = useState(false)
 
- useEffect(()=>{
 
-const selectedProduct = productArr.find(
-  (product) => +product.id === +productId
-);
-setProductDeets(selectedProduct)
-setHaveDeets(true)
+  useEffect(() => {
 
- },[productArr, productId])
-  
+    const existingProductDeets = JSON.parse(
+      localStorage.getItem("selectedProduct")
+    );
+
+    if (existingProductDeets && existingProductDeets.id === +productId) {
+      setProductDeets(existingProductDeets);
+      setHaveDeets(true);
+    }
+     else {
+
+      const selectedProduct = productArr.find(
+        (product) => +product.id === +productId
+      );
+
+      if (selectedProduct) {
+        localStorage.setItem(
+          "selectedProduct",
+          JSON.stringify(selectedProduct)
+        );
+        setProductDeets(selectedProduct);
+        setHaveDeets(true);
+      }
+    }
+  }, [productId, productArr]);
+
   return (
     <div>
       <NavbarHeader />
-      {haveDeets && productDeets&& 
-        <div>
-          <h2>{productDeets.title}</h2>
-          <p>{productDeets.description}</p>
-          <p>{productDeets.price}</p>
-          <img src={productDeets.image} alt={productDeets.title} />
-        </div>
-}
-     
+      {haveDeets && productDeets && (
+        <>
+          <div className="detail">
+            <h2>{productDeets.title}</h2>
+            <p>{productDeets.Des}</p>
+            <p>Rs:{productDeets.price}</p>
+          </div>
+          <ProductImg src={productDeets.image} />
+          <div className="deets-btn">
+            <Button variant="warning">Add To Cart</Button>
+            <Button variant="danger">Buy Now</Button>
+          </div>
+        </>
+      )}
 
       <Footer />
     </div>

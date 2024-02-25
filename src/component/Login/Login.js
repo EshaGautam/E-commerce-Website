@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom'
 function Login() {
         const history = useHistory();
       const ProductCtx = useContext(ProductContext);
-      const { handleLoggedIn } = ProductCtx;
+      const { handleLoggedIn, handleUserEmail } = ProductCtx;
 
     const emailInputRef = useRef()
     const PasswordInputRef = useRef()
@@ -39,6 +39,7 @@ const handleLogin=async(event)=>{
     const response = await userData.json();
     if(userData.ok){
         handleLoggedIn(response.idToken)
+         handleUserEmail(response.email);
         history.replace("/store");
     }
     else{

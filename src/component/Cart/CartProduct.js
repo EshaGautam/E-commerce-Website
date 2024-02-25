@@ -8,7 +8,14 @@ import ProductContext from "../Store/ProductContext";
 function Cart(props) {
   
   const ProductCtx = useContext(ProductContext);
-  const { cart} = ProductCtx;
+  const { cart,handleCartItemRemove} = ProductCtx;
+const handleRemove=(id)=>{
+ handleCartItemRemove(id)
+
+}
+
+
+
 
 
 
@@ -19,7 +26,7 @@ let totalAmount = cart.reduce(
 
   let Items = cart.map((item) => (
     <Container className="item">
-      <Row key={item.index}>
+      <Row key={item.id}>
         <Col>
           <img src={item.image} alt="404"></img>
           {item.title}
@@ -31,7 +38,7 @@ let totalAmount = cart.reduce(
             <Form>
               <Form.Control placeholder="Qty" value={item.qty}/>
             </Form>
-            <Button variant="outline-danger" className="remove-btn">
+            <Button variant="outline-danger" className="remove-btn" onClick={()=>{handleRemove(item.id)}}>
               Remove
             </Button>
           </div>
@@ -57,7 +64,6 @@ let totalAmount = cart.reduce(
         
         {Items}
       </div>
-
       <Row className="amt">Total Amount:{totalAmount}</Row>
     </Container>
   );

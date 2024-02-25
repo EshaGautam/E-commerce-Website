@@ -1,0 +1,29 @@
+
+
+.detail{
+ position: absolute;
+    left: 50%;
+    top: 20%;
+}
+
+.detail h2{
+
+    font-size: 2rem;
+}
+.detail p{
+    margin-left: 50%;
+    font-size: x-large;
+}
+.deets-btn{
+    position: absolute;
+    top: 80%;
+    left:5%;
+    
+
+}
+.deets-btn button{
+    margin-left: 5px;
+   background-color: rgb(100, 100, 100);
+   border: none;
+   color: white;
+}

@@ -1,17 +1,18 @@
-.cart-item{
+.cart-item {
     width: auto;
     border: 2px solid red;
     position: fixed;
     z-index: 100;
     background-color: black;
     color: white;
-    top:7%;
-    right:0;
+    top: 7%;
+    right: 0;
     font-size: 2rem;
-    border-radius:25px;
-    
-    
+    border-radius: 25px;
+    max-height: 80vh; /* Set a maximum height */
+    overflow-y: auto; /* Enable vertical scroll */
 }
+
 
 .item{
     font-size: 1rem;

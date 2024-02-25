@@ -1,0 +1,30 @@
+.img-ctn{
+    display: flex;
+    margin-left: 25px;
+  
+  
+
+    
+}
+.extra-img{
+display: flex;
+ flex-direction: column;
+ height: 50px;
+width: 50px;
+position: absolute;
+  top: 10%;
+
+      
+}
+.extra-img img{
+margin-bottom: 1rem;
+}
+.main-img{
+margin-left: 10%;
+margin-top: 10%;
+height: 400%;
+   transition: transform 0.3s ease-out;
+
+align-items: center;
+}
+
