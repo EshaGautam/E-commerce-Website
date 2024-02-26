@@ -9,8 +9,8 @@ function Cart(props) {
   
   const ProductCtx = useContext(ProductContext);
   const { cart,handleCartItemRemove} = ProductCtx;
-const handleRemove=(id)=>{
- handleCartItemRemove(id)
+const handleRemove=(item)=>{
+ handleCartItemRemove(item)
 
 }
 
@@ -26,7 +26,7 @@ let totalAmount = cart.reduce(
 
   let Items = cart.map((item) => (
     <Container className="item">
-      <Row key={item.id}>
+      <Row key={item._id}>
         <Col>
           <img src={item.image} alt="404"></img>
           {item.title}
@@ -38,7 +38,7 @@ let totalAmount = cart.reduce(
             <Form>
               <Form.Control placeholder="Qty" value={item.qty}/>
             </Form>
-            <Button variant="outline-danger" className="remove-btn" onClick={()=>{handleRemove(item.id)}}>
+            <Button variant="outline-danger" className="remove-btn" onClick={()=>{handleRemove(item)}}>
               Remove
             </Button>
           </div>

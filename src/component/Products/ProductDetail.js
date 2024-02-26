@@ -6,13 +6,23 @@ import { useParams } from "react-router-dom";
 import ProductContext from "../Store/ProductContext";
 import ProductImg from "./ProductImg";
 import { Button } from "react-bootstrap";
+import CartButton from "../Cart/CartButton";
 
 function ProductDetail() {
   const ProductCtx = useContext(ProductContext);
-  const { productArr } = ProductCtx;
+  const { productArr, handleAddToCart } = ProductCtx;
+
+ 
+
+
   const { productId } = useParams();
   const [productDeets, setProductDeets] = useState([]);
   const [haveDeets,setHaveDeets] = useState(false)
+
+
+   const handleAddBtn = (id) => {
+     handleAddToCart(id);
+   };
 
 
   useEffect(() => {
@@ -45,6 +55,7 @@ function ProductDetail() {
   return (
     <div>
       <NavbarHeader />
+      <CartButton />
       {haveDeets && productDeets && (
         <>
           <div className="detail">
@@ -54,7 +65,14 @@ function ProductDetail() {
           </div>
           <ProductImg src={productDeets.image} />
           <div className="deets-btn">
-            <Button variant="warning">Add To Cart</Button>
+            <Button
+              variant="warning"
+              onClick={() => {
+                handleAddBtn(productDeets.id);
+              }}
+            >
+              Add To Cart
+            </Button>
             <Button variant="danger">Buy Now</Button>
           </div>
         </>

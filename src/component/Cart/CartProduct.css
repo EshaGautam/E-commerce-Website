@@ -9,8 +9,8 @@
     right: 0;
     font-size: 2rem;
     border-radius: 25px;
-    max-height: 80vh; /* Set a maximum height */
-    overflow-y: auto; /* Enable vertical scroll */
+    max-height: 80vh;
+    overflow-y: auto; 
 }
 
 

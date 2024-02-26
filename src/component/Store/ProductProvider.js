@@ -63,6 +63,7 @@ const productsArray = [
 const ProductProvider = (props) => {
   const existingUser = localStorage.getItem("token");
   const existingExpirationTime = localStorage.getItem("time");
+  
 
   const [productArr, setProductArr] = useState(productsArray);
   const [cart, setCart] = useState([]);
@@ -70,17 +71,28 @@ const ProductProvider = (props) => {
   const [userEmail, setUserEmail] = useState("");
   const [expirationTime, setExpirationTime] = useState(existingExpirationTime);
 
+  const clearedEmail = encodeURIComponent(userEmail.replace(/[@.]/g, ""));
+  const dataApi = `https://crudcrud.com/api/25978fc54e6c4472a3b08bc2220eb58f/cart`;
+
   const isUserLoggedIn = !!token;
 
-  useEffect(() => {
-    fetchData();
-  }, [userEmail]);
+  // checking expiration time when page initally render
 
-  useEffect(() => {
-    if (expirationTime && new Date(expirationTime) < new Date()) {
-      handleLogOut();
-    }
-  }, [expirationTime]);
+useEffect(() => {
+  if (expirationTime && new Date(expirationTime) < new Date()) {
+    handleLogOut();
+  }
+}, [expirationTime]);
+
+
+
+// Fetch data on initial render
+
+useEffect(() => {
+   fetchData(); 
+}, [token,userEmail]);
+
+//  handling Add-cart when user click on button
 
   const handleAddToCart = (id) => {
     const existingProduct = cart.find((product) => +product.id === +id);
@@ -99,99 +111,118 @@ const ProductProvider = (props) => {
     }
   };
 
+
+
+  //  sending Data when user Add product in the cart
+
+
   async function sendData(product) {
     try {
-      const clearedEmail = userEmail.replace(/[@.]/g, "");
-      const response = await fetch(
-        `https://crudcrud.com/api/0e6c679dda864cb58184d81c71d2b18d/cart/${clearedEmail}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(product),
-        }
-      );
+      if(userEmail){
+      const response = await fetch(dataApi, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(product),
+      });
 
       if (response.ok) {
-        console.log(response);
+        console.log("Okay");
       }
+    }
+       
     } catch (error) {
       console.error("Error in sending cart data:", error);
     }
   }
 
+
+  // Function to fetch data from database
   const fetchData = async () => {
     try {
-      const clearedEmail = userEmail.replace(/[@.]/g, "");
-      const userDeets = await fetch(
-        `https://crudcrud.com/api/0e6c679dda864cb58184d81c71d2b18d/cart/${clearedEmail}`
-      );
-      const data = await userDeets.json();
-      console.log(data);
-
-      if (userDeets.ok) {
-        setCart(data);
-      } else {
-        throw new Error("Failed to fetch cart data");
-      }
-    } catch (error) {
+   const userDeets = await fetch(dataApi);
+   const data = await userDeets.json();
+   if (userDeets.ok) {
+     console.log(data)
+       setCart(data);
+     
+   } else {
+     throw new Error("Failed to fetch cart data");
+   }
+      
+    }
+   
+     catch (error) {
       console.error("Fetch error:", error);
     }
   };
 
-  function handleLoggedIn(id) {
+
+//handling login----------------------
+  function handleLoggedIn(id,email) {
     const expirationTime = new Date(new Date().getTime() + 5 * 60 * 1000);
     localStorage.setItem("token", id);
     localStorage.setItem("time", expirationTime.toISOString());
     setToken(id);
     setExpirationTime(expirationTime.toISOString());
+    setUserEmail(email);
+    
   }
 
+
+// handling logOut-----------------
   const handleLogOut = () => {
     setToken(null);
     setExpirationTime(null);
     localStorage.removeItem("token");
     localStorage.removeItem("time");
+  
   };
+
+
+
+// Adding products to be displayed on the screen
 
   function addProduct(product) {
     setProductArr((prev) => [...prev, { product }]);
   }
 
-  const handleUserEmail = (email) => {
-    setUserEmail(email);
-  };
 
-  const handleCartItemRemove = (id) => {
-    const Items = cart.filter((item) => item.id !== id);
-    setCart(Items);
-  };
 
-  async function deleteData(id) {
-    try {
-      const clearedEmail = userEmail.replace(/[@.]/g, "");
-      const response = await fetch(
-        `https://crudcrud.com/api/0e6c679dda864cb58184d81c71d2b18d/cart/${clearedEmail}/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
 
-      if (response.ok) {
-        console.log(response);
-        handleCartItemRemove(id);
-        fetchData();
-      } else {
-        console.error("Failed to delete product from cart");
-      }
-    } catch (error) {
-      console.error("Error in deleting cart data:", error);
+// Remove data from cart
+const handleCartItemRemove = (items) => {
+  const Items = cart.filter((item) => item._id !== items._id);
+  const deleteItem = cart.find((item) => item._id === items._id);
+  setCart(Items);
+  deleteData(deleteItem._id);
+};
+
+
+// Deleting data from dataBase
+async function deleteData(id) {
+  try {
+
+    const response = await fetch(dataApi/`${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      console.log("Deleted");
+    } else {
+      console.error("Failed to delete product from cart");
     }
+
+  } catch (error) {
+    console.error("Error in deleting cart data:", error);
   }
+}
+
+
 
   const productList = {
     productArr,
@@ -201,10 +232,9 @@ const ProductProvider = (props) => {
     token,
     handleLoggedIn,
     isUserLoggedIn,
-    handleUserEmail,
     handleLogOut,
     handleCartItemRemove,
-    deleteData,
+    
   };
 
   return (
