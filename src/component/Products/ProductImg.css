@@ -1,8 +1,9 @@
 .img-ctn{
     display: flex;
     margin-left: 25px;
-  
-  
+    border-right: 10px solid grey;
+ 
+   
 
     
 }

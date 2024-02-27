@@ -7,6 +7,7 @@ import ProductContext from "../Store/ProductContext";
 import ProductImg from "./ProductImg";
 import { Button } from "react-bootstrap";
 import CartButton from "../Cart/CartButton";
+import ProductReview from "./ProductReview";
 
 function ProductDetail() {
   const ProductCtx = useContext(ProductContext);
@@ -61,9 +62,10 @@ function ProductDetail() {
           <div className="detail">
             <h2>{productDeets.title}</h2>
             <p>{productDeets.Des}</p>
-            <p>Rs:{productDeets.price}</p>
+            <p className="price-deets">Rs:{productDeets.price}</p>
           </div>
           <ProductImg src={productDeets.image} />
+          <ProductReview reviews = {productDeets.review}/>
           <div className="deets-btn">
             <Button
               variant="warning"

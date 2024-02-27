@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Card,Button,Container,Col,Row} from 'react-bootstrap';
 import ProductContext from "../Store/ProductContext";
-import './Product.css'
+import './Products.css'
 import { Link } from 'react-router-dom';
 
 

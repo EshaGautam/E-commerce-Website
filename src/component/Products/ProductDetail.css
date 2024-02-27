@@ -2,8 +2,11 @@
 
 .detail{
  position: absolute;
-    left: 50%;
-    top: 20%;
+    left: 40%;
+    top: 10%;
+    border: 2px solid grey;
+    padding: 2rem;
+    border-radius: 1rem;
 }
 
 .detail h2{
@@ -11,8 +14,11 @@
     font-size: 2rem;
 }
 .detail p{
-    margin-left: 50%;
-    font-size: x-large;
+
+    font-size: 1rem;
+}
+.price-deets{
+font-weight: bold;
 }
 .deets-btn{
     position: absolute;

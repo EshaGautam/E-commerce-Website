@@ -7,7 +7,20 @@ const productsArray = [
     title: "Laptop",
     image: "https://source.unsplash.com/150x150/?laptop",
     price: 1200,
-    Des: "zzzz",
+    Des: "Introducing the ABC Laptop, a powerful computing device designed for productivity and entertainment",
+    review: [
+      {
+        id: 1,
+        user: {
+          userId: 456,
+          username: "tech_guru",
+        },
+        rating: 4.5,
+        comment:
+          "The phone's camera quality is impressive, and the battery life is excellent. Highly recommended!",
+        date: "2024-02-26",
+      },
+    ],
   },
   {
     id: Math.random(),
@@ -16,12 +29,37 @@ const productsArray = [
       "../public/productImage/xl-hoodsweat-feather-black-smartees-original-imafvk3z7hv9fuzf.webp",
     Des: "zzzz",
     price: 800,
+    review: [
+      {
+        id: 3,
+        user: {
+          userId: 123,
+          username: "mobile_enthusiast",
+        },
+        rating: 5.0,
+        comment:
+          "This phone exceeded my expectations! The display is vibrant, and the processing speed is top-notch.",
+        date: "2024-02-24",
+      },
+    ],
   },
   {
     id: Math.random(),
     title: "T-Shirt",
     image: "https://source.unsplash.com/150x150/?t-shirt",
     price: 20,
+    review: [
+      {
+        id: 2,
+        user: {
+          userId: 789,
+          username: "jane_smith",
+        },
+        rating: 3.8,
+        comment: "Good quality, but the size runs a bit small.",
+        date: "2024-02-25",
+      },
+    ],
   },
   {
     id: Math.random(),
@@ -29,6 +67,18 @@ const productsArray = [
     image: "https://source.unsplash.com/150x150/?jeans",
     price: 50,
     Des: "zzzz",
+    review: [
+      {
+        id: 3,
+        user: {
+          userId: 123,
+          username: "bob_jones",
+        },
+        rating: 5.0,
+        comment: "Absolutely fantastic! Will buy again.",
+        date: "2024-02-24",
+      },
+    ],
   },
   {
     id: Math.random(),
@@ -36,6 +86,18 @@ const productsArray = [
     image: "https://source.unsplash.com/150x150/?coffeemaker",
     price: 60,
     Des: "zzzz",
+    review: [
+      {
+        id: 4,
+        user: {
+          userId: 567,
+          username: "sara_miller",
+        },
+        rating: 4.2,
+        comment: "Fast shipping and great customer service.",
+        date: "2024-02-23",
+      },
+    ],
   },
   {
     id: Math.random(),
@@ -43,6 +105,18 @@ const productsArray = [
     image: "https://source.unsplash.com/150x150/?toaster",
     price: 40,
     Des: "zzzz",
+    review: [
+      {
+        id: 8,
+        user: {
+          userId: 901,
+          username: "amy_harris",
+        },
+        rating: 4.0,
+        comment: "Overall satisfied with the purchase.",
+        date: "2024-02-19",
+      },
+    ],
   },
   {
     id: Math.random(),
@@ -50,6 +124,19 @@ const productsArray = [
     image: "https://source.unsplash.com/150x150/?book,sciencefiction",
     price: 15,
     Des: "zzzz",
+    review: [
+      {
+        id: 1,
+        user: {
+          userId: 456,
+          username: "book_lover123",
+        },
+        rating: 4.2,
+        comment:
+          "This book kept me hooked from start to finish. The plot twists were unexpected!",
+        date: "2024-02-26",
+      },
+    ],
   },
   {
     id: Math.random(),
@@ -57,6 +144,18 @@ const productsArray = [
     image: "https://source.unsplash.com/150x150/?book,selfhelp",
     price: 12,
     Des: "zzzz",
+    review: [
+      {
+        id: 1,
+        user: {
+          userId: 456,
+          username: "john_doe",
+        },
+        rating: 4.5,
+        comment: "Great product, exceeded my expectations!",
+        date: "2024-02-26",
+      },
+    ],
   },
 ];
 
